@@ -1,27 +1,67 @@
-# Vue 3 + Typescript + Vite
+# router
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+## 编写 router
 
-## Recommended IDE Setup
+![示例图](./src/assets/example/logo.png)
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
+```
+{
+  必填    path: path,
+  必填    name: name, // name必须唯一,路由跳转的时候是使用的name
+  必填    component: component,
+  必填    meta: {
+           当鼠标放在面包屑导航上的时候是否显示该名称, 默认隐藏
+           PS：一般只有左侧菜单的页面才需要显示
+  非必填    show:true,
+  必填      title: '业务场景接入详情' // 面包屑名称
+            showTitle:true  //是否显示页面title组件
+          }
+}
+```
 
-### If Using `<script setup>`
+# 文件引入方式规范
 
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
+```
+//  统一使用别名
+import { isString } from '@/utils/is'
+PS: 同一目录内除外,可以不使用别名
+```
 
-## Type Support For `.vue` Imports in TS
+# Storage
 
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
+## 两种引入方式
 
-### If Using Volar
+```
+1. 引入 import { createStorage } from '@/utils/Storage'
+const Storage = createStorage({storage: localStorage}) // localStorage
+const Storage = createStorage({storage: session}) // sessionStorage
+2. 引入 import { storage } from '@/utils/Storage'
+方法
+storage.set(key,value) // 设置storage
+storage.get(key)       // 获取storage
+storage.remove(key)    // 删除storage
+storage.setCookie()    // 设置Cookie
+storage.getCookie()    // 获取Cookie
+storage.removeCookie() //删除 Cookie
+storage.clearCookie()  // 清除Cookie
+```
 
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
+# 格式化代码
 
-### If Using Vetur
+1. vscode 下载插件 ESlint 和 Prettier-Code formatter
+2. vscode setting.json 配置如下
 
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette
-5. Search and run "Select TypeScript version" -> "Use workspace version"
+```
+{
+  "prettier.configPath": ".prettierrc.js", // 指定prettierrc文件
+  "editor.formatOnSave": true // 保存自动格式化
+}
+
+```
+
+# 文档地址
+
+1. [vue3](https://v3.cn.vuejs.org/)
+2. [vue-router4.x](https://next.router.vuejs.org/zh/index.html)
+3. [antd2.x](https://2x.antdv.com/components/button-cn)
+4. [jsx 语法文档](https://github.com/vuejs/jsx-next/blob/dev/packages/babel-plugin-jsx/README-zh_CN.md)

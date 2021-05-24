@@ -30,7 +30,7 @@ export default defineComponent({
   },
   setup: () => {
     return {
-      username: "黎在亚",
+      username: "admin",
       collapsed: ref<boolean>(false),
     };
   },
