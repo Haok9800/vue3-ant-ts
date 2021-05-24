@@ -1,0 +1,19 @@
+//  覆盖 a-menu组件 选中后的样式
+:deep(.ant-menu.ant-menu-dark .ant-menu-item-selected, .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected){
+    background: linear-gradient(270deg, #5C99F5 0%, #4A62E7 100%);
+    border-radius: 4px;
+}
+//  覆盖 a-menu-item组件 上边距距离
+:deep(.ant-menu-inline .ant-menu-item){
+    margin-top:0px;
+}
+//  覆盖 a-menu组件 组件高度
+// /deep/ .ant-menu-root{
+//     height:100vh;
+//     overflow: scroll;
+//     -ms-overflow-style: none;
+//     overflow: -moz-scrollbars-none;
+// }
+// // 隐藏a-menu 滚动条
+// /deep/ .ant-menu-root::-webkit-scrollbar { width: 0 !important }
+
